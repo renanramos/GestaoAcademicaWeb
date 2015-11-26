@@ -8,6 +8,8 @@ public interface DocenteDAO {
 
 	public void adicionarDocente(Docentes docente);
 	public void removerDocente(int id);
+	public void atualizaDocente(int id);
 	public List<Docentes> listaDocentes();
+	public Docentes docenteById(int id);
 	
 }

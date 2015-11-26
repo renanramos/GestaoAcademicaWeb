@@ -30,4 +30,14 @@ public class DocenteServiceImpl implements DocenteService{
 		return docenteDAO.listaDocentes();
 	}
 
+	@Transactional
+	public void atualizaDocente(int id) {
+		docenteDAO.atualizaDocente(id);
+	}
+
+	@Override
+	public Docentes docenteById(int id) {		
+		return docenteDAO.docenteById(id);
+	}
+
 }

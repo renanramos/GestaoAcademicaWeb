@@ -55,5 +55,10 @@ public class Docentes {
 	public void setTitulacao(String titulacao) {
 		this.titulacao = titulacao;
 	}
+
+	@Override
+	public String toString() {
+		return "Docentes [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", titulacao=" + titulacao + "]";
+	}
 	
 }

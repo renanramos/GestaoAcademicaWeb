@@ -68,4 +68,38 @@ public class DocenteDAOImpl implements DocenteDAO{
 		return docentes;
 	}
 
+	@Override
+	public void atualizaDocente(int id) {
+		Docentes docente = docenteById(id);
+		try{
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			session.update(docente);
+			tx.commit();
+			session.close();
+		}catch(Exception e){
+			tx.rollback();
+			session.close();
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Docentes docenteById(int id) {
+		Docentes docente = null;
+		try{
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			docente = (Docentes) session.load(Docentes.class, id);			
+			tx.commit();
+			session.close();
+		}catch(Exception e){
+			tx.rollback();
+			session.close();
+			e.printStackTrace();
+		}
+		
+		return docente;
+	}
+
 }

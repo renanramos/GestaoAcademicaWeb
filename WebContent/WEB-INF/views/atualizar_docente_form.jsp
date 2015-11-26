@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,24 +21,18 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
  
-<title>Cadastro de Docentes</title>
+<title>Atualização de Docentes</title>
 </head>
 <body>
 <div class="container">
-<h3><legend>Formulário de Cadastro de Docentes</legend></h3>
+<h3><legend>Atualizar Docente</legend></h3>
 </div>
 <div class="container">
 <div class="col-mod-4"></div>
 <div class="col-mod-4">
-<form:form method="post" action="adicionar.html" commandName="docente">
-	<label>Nome:</label>
-		<form:input path="nome"  cssClass="form-control"></form:input><br/>
-	<label>Matrícula:</label>	
-		<form:input path="matricula" cssClass="form-control"></form:input><br/>
-	<label>Titulação:</label>
-		<form:input path="titulacao" cssClass="form-control"></form:input><br/>		
-		<input type="submit" value="Salvar" class="btn btn-success"/>		
-</form:form>
+<c:if test="${!empty docente}"> 
+	
+</c:if>
 </div>
 <div class="col-mod-4"></div>
 </div>
