@@ -21,11 +21,12 @@
 </head>
 <body>
 <div class="container">
-<h3><legend>Docentes Cadastrados</legend></h3>
+<h3><legend><a href="home">Docentes Cadastrados</a></legend></h3>
 </div>
 <c:if test="${!empty docenteList}">
 <div class="container">
 <div class="col-mod-4"></div>
+<br><br><br>
 <div class="col-mod-4">
 <table class="table table-striped">
 <tr>
@@ -41,13 +42,14 @@
 	<td>${docente.matricula}</td>
 	<td>${docente.titulacao}</td>
 	<td><a href="remover/${docente.id}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
-	<td><a href="update/${docente.id}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+<%-- 	<td><a href="update/${docente.id}"><span class="glyphicon glyphicon-pencil"></span></a></td> --%>
 </tr>
 </c:forEach>
 </table>
 </div>
 <div>
-	<label><a herf="form"><h5>Novo docente</h5></a></label>
+<!-- 	<h4><a href="form" class="label label-success">&nbsp;Novo</a></h4><i class="glyphicon glyphicon-plus-sign"></i> -->
+	<a href="form"><button class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Novo</button></a>
 </div>
 <div class="col-mod-4"></div>
 </div>

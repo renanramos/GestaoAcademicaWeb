@@ -1,4 +1,4 @@
-package br.com.devmedia.gestaoacademicaweb.model;
+package br.com.devmedia.gestaoacademicaweb.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="DOCENTES")
-public class Docentes {
+public class Docente {
 
 	@Id
 	@Column(name="ID")

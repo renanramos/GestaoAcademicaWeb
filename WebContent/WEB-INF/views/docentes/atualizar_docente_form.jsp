@@ -25,14 +25,21 @@
 </head>
 <body>
 <div class="container">
-<h3><legend>Atualizar Docente</legend></h3>
+<legend><h3>Atualizar Docente</h3></legend>
 </div>
 <div class="container">
 <div class="col-mod-4"></div>
 <div class="col-mod-4">
-<c:if test="${!empty docente}"> 
-	
-</c:if>
+<form:form action="atualizar.html" method="put" commandName="docente">
+	<form:hidden path="id"/>
+	<table>
+		<tr>
+			<td>Nome:<form:input path="nome"/></td>
+			<td>Matricula:<form:input path="matricula"/></td>
+			<td>Titulação:<form:input path="titulacao"/></td>
+		</tr>
+	</table>
+</form:form>
 </div>
 <div class="col-mod-4"></div>
 </div>

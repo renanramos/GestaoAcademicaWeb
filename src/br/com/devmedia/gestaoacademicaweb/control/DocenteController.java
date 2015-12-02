@@ -6,14 +6,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-import br.com.devmedia.gestaoacademicaweb.model.Docentes;
+import br.com.devmedia.gestaoacademicaweb.pojo.Docente;
 import br.com.devmedia.gestaoacademicaweb.service.DocenteService;
 
 @Controller
@@ -26,42 +26,44 @@ public class DocenteController {
 	public String home() {		
 		return "index";
 	}
-		
+	
+	@RequestMapping("/home")
+	public String inicial(){
+		return "index";
+	}
+
+//Configurações referentes a Docentes ---------------------------------------------	
 	@RequestMapping("/listaDocentes")
 	public String listarDocentes(Map<String, Object> map){
-			map.put("docente", new Docentes());
+			map.put("docente", new Docente());
 			map.put("docenteList", docenteService.listarDocentes());		
-		return "listar_docente";
+		return "docentes/listar_docente";
 	}
 	
 	@RequestMapping("/form")
 	public String form(Map<String, Object> map){
-			map.put("docente", new Docentes());
-		return "inserir_docente_form";
+			map.put("docente", new Docente());
+		return "docentes/inserir_docente_form";
 	}
 	
 	@RequestMapping(value="/adicionar", method=RequestMethod.POST)
-	public String adicionarDocente(@ModelAttribute("docente") Docentes docente, ModelMap model, HttpServletRequest request){		
+	public String adicionarDocente(@ModelAttribute("docente") Docente docente, ModelMap model, HttpServletRequest request){		
 			model.addAttribute("nome", docente.getNome());
 			model.addAttribute("matricula", docente.getMatricula());
 			model.addAttribute("titulacao", docente.getTitulacao());
 			docenteService.adicionarDocente(docente);
-		return "redirect:/index";
+		return "redirect:/listaDocentes";
 	}
 	
-	@RequestMapping("/update/{docenteId}")
-	public String updateForm(Map<String, Object> map, @PathVariable("docenteId") int id){			
-			map.put("docente", new Docentes());
-			map.put("docenteList", docenteService.docenteById(id));
-		return "atualizar_docente_form";
+	@RequestMapping(value="/update/{docenteId}", method=RequestMethod.GET)
+	public ModelAndView updateForm(@PathVariable("docenteId") int id){			
+			Docente docente = docenteService.docenteById(id);
+		return new ModelAndView("atualizar_docente_form","docente",docente);
 	}
 	
-	@RequestMapping(value="/atualizar", method=RequestMethod.POST)
-	public String atualizarDocente(@ModelAttribute("docente") Docentes docente, ModelMap model, HttpServletRequest request){
-			model.addAttribute("nome", docente.getNome());
-			model.addAttribute("matricula", docente.getMatricula());
-			model.addAttribute("titulacao", docente.getTitulacao());
-			docenteService.atualizaDocente(docente.getId());
+	@RequestMapping(value="/atualizar", method=RequestMethod.PUT)
+	public String atualizarDocente(final Docente docente){
+			docenteService.atualizaDocente(docente);
 		return "redirect:/listaDocentes";
 	}
 	
@@ -70,5 +72,9 @@ public class DocenteController {
 			docenteService.removerDocente(id);
 		return "redirect:/listaDocentes";
 	}
+
+//Configurações referentes a Alunos ---------------------------------------------	
+	
+	
 	
 }

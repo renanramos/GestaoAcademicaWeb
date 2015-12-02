@@ -1,4 +1,4 @@
-package br.com.devmedia.gestaoacademicaweb.dao;
+package br.com.devmedia.gestaoacademicaweb.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.com.devmedia.gestaoacademicaweb.model.Docentes;
+import br.com.devmedia.gestaoacademicaweb.dao.DocenteDAO;
+import br.com.devmedia.gestaoacademicaweb.pojo.Docente;
 
 @Repository
 public class DocenteDAOImpl implements DocenteDAO{
@@ -19,7 +20,7 @@ public class DocenteDAOImpl implements DocenteDAO{
 	private Transaction tx;
 	private Session session;	
 	
-	public void adicionarDocente(Docentes docente) {				
+	public void adicionarDocente(Docente docente) {				
 		try {											
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();			
@@ -36,7 +37,7 @@ public class DocenteDAOImpl implements DocenteDAO{
 	public void removerDocente(int id) {
 		try{
 			session = sessionFactory.openSession();
-			Docentes docente = (Docentes) session.load(Docentes.class, id);
+			Docente docente = (Docente) session.load(Docente.class, id);
 			if(docente != null){				
 				tx = session.beginTransaction();
 				session.delete(docente);
@@ -52,8 +53,8 @@ public class DocenteDAOImpl implements DocenteDAO{
 	}
 
 	@Override
-	public List<Docentes> listaDocentes() {	
-		List<Docentes> docentes = new ArrayList<Docentes>();
+	public List<Docente> listaDocentes() {	
+		List<Docente> docentes = new ArrayList<Docente>();
 		try{
 			session = sessionFactory.openSession();			
 			tx = session.beginTransaction();
@@ -69,8 +70,7 @@ public class DocenteDAOImpl implements DocenteDAO{
 	}
 
 	@Override
-	public void atualizaDocente(int id) {
-		Docentes docente = docenteById(id);
+	public void atualizaDocente(Docente docente) {		
 		try{
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
@@ -85,20 +85,19 @@ public class DocenteDAOImpl implements DocenteDAO{
 	}
 
 	@Override
-	public Docentes docenteById(int id) {
-		Docentes docente = null;
+	public Docente docenteById(int id) {
+		Docente docente = null;
 		try{
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
-			docente = (Docentes) session.load(Docentes.class, id);			
+			docente = (Docente) session.load(Docente.class, id);			
 			tx.commit();
 			session.close();
 		}catch(Exception e){
 			tx.rollback();
 			session.close();
 			e.printStackTrace();
-		}
-		
+		}		
 		return docente;
 	}
 

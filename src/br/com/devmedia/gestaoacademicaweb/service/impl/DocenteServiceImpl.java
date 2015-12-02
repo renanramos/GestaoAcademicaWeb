@@ -1,4 +1,4 @@
-package br.com.devmedia.gestaoacademicaweb.service;
+package br.com.devmedia.gestaoacademicaweb.service.impl;
 
 import java.util.List;
 
@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.devmedia.gestaoacademicaweb.dao.DocenteDAO;
-import br.com.devmedia.gestaoacademicaweb.model.Docentes;
+import br.com.devmedia.gestaoacademicaweb.pojo.Docente;
+import br.com.devmedia.gestaoacademicaweb.service.DocenteService;
 
 @Service("docenteService")
 public class DocenteServiceImpl implements DocenteService{
@@ -16,7 +17,7 @@ public class DocenteServiceImpl implements DocenteService{
 	private DocenteDAO docenteDAO;
 	
 	@Transactional
-	public void adicionarDocente(Docentes docente) {
+	public void adicionarDocente(Docente docente) {
 		docenteDAO.adicionarDocente(docente);
 	}
 
@@ -26,17 +27,17 @@ public class DocenteServiceImpl implements DocenteService{
 	}
 
 	@Override
-	public List<Docentes> listarDocentes() {
+	public List<Docente> listarDocentes() {
 		return docenteDAO.listaDocentes();
 	}
 
 	@Transactional
-	public void atualizaDocente(int id) {
-		docenteDAO.atualizaDocente(id);
+	public void atualizaDocente(Docente docente) {
+		docenteDAO.atualizaDocente(docente);
 	}
 
 	@Override
-	public Docentes docenteById(int id) {		
+	public Docente docenteById(int id) {		
 		return docenteDAO.docenteById(id);
 	}
 

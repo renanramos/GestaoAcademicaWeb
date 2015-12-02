@@ -12,6 +12,8 @@
     	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     	<property name="hibernate.current_session_context_class">thread</property>
     	
-		<mapping class="br.com.devmedia.gestaoacademicaweb.model.Docentes"/>					    
+		<mapping class="br.com.devmedia.gestaoacademicaweb.pojo.Docente"/>
+		<mapping class="br.com.devmedia.gestaoacademicaweb.pojo.Aluno"/>
+		<mapping class="br.com.devmedia.gestaoacademicaweb.pojo.Curso"/>					    
 	</session-factory>
 </hibernate-configuration>	
