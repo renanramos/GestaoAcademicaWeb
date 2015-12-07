@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,9 +21,9 @@ public class Aluno {
 	
 	@Column(name="MATRICULA")
 	private String matricula;
-	
+		
 	@Column(name="ID_CURSO")
-	private Curso curso;
+	private Integer id_curso;
 
 	public Integer getId() {
 		return id;
@@ -48,17 +49,19 @@ public class Aluno {
 		this.matricula = matricula;
 	}
 
-	public Curso getCurso() {
-		return curso;
+	public Integer getId_curso() {
+		return id_curso;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void setId_curso(Integer id_curso) {
+		this.id_curso = id_curso;
 	}
 
 	@Override
 	public String toString() {
-		return "Aluno [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", curso=" + curso + "]";
-	}	
+		return "Aluno [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", id_curso=" + id_curso + "]";
+	}
+
+
 	
 }

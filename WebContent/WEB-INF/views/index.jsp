@@ -41,7 +41,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="listaDocentes">Professores</a></li>
-                  <li><a href="#">Alunos</a></li>
+                  <li><a href="listaAlunos">Alunos</a></li>
+                  <li><a href="listaCursos">Cursos</a></li>
                 </ul>
               </li>
             </ul>

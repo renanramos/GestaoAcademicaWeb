@@ -74,7 +74,7 @@ public class AlunoDAOImpl implements AlunoDAO{
 		try{
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			alunos = session.createQuery("from Alunos").list();
+			alunos = session.createQuery("from Aluno").list();
 			transaction.commit();
 			session.close();
 		}catch(Exception ex){

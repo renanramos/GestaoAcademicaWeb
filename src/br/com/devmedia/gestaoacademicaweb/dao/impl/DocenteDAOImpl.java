@@ -58,7 +58,7 @@ public class DocenteDAOImpl implements DocenteDAO{
 		try{
 			session = sessionFactory.openSession();			
 			tx = session.beginTransaction();
-			docentes = session.createQuery("from Docentes").list();
+			docentes = session.createQuery("from Docente").list();
 			tx.commit();
 			session.close();
 		}catch(Exception e){
