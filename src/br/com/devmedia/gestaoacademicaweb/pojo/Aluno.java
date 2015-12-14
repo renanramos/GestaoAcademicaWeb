@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,8 +24,9 @@ public class Aluno {
 	@Column(name="MATRICULA")
 	private String matricula;
 		
-	@Column(name="ID_CURSO")
-	private Integer id_curso;
+	@ManyToOne
+	@JoinColumn(name="id_curso",nullable=false, insertable=false, updatable=false)
+	private Curso curso;
 
 	public Integer getId() {
 		return id;
@@ -48,18 +51,18 @@ public class Aluno {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-
-	public Integer getId_curso() {
-		return id_curso;
+	
+	public Curso getId_curso() {
+		return curso;
 	}
 
-	public void setId_curso(Integer id_curso) {
-		this.id_curso = id_curso;
+	public void setId_curso(Curso curso) {
+		this.curso = curso;
 	}
 
 	@Override
 	public String toString() {
-		return "Aluno [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", id_curso=" + id_curso + "]";
+		return "Aluno [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", id_curso=" + curso.getId() + "]";
 	}
 
 

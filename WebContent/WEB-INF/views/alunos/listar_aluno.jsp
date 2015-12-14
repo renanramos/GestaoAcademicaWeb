@@ -35,7 +35,7 @@
 <tr>
 	<th>Nome</th>
 	<th>Matrícula</th>
-<!-- 	<th>Titulação</th> -->
+ 	<th>Curso</th> 
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
 </tr>
@@ -43,7 +43,7 @@
 <tr>
 	<td>${aluno.nome}</td>
 	<td>${aluno.matricula}</td>
-<%-- 	<td>${aluno.titulacao}</td> --%>
+	<td>${aluno.curso.nome}</td>
 	<td><a href="remover/${aluno.id}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 <%-- 	<td><a href="update/${docente.id}"><span class="glyphicon glyphicon-pencil"></span></a></td> --%>
 </tr>

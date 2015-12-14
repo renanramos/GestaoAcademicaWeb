@@ -3,6 +3,8 @@ package br.com.devmedia.gestaoacademicaweb.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,6 +21,7 @@ public class AlunoDAOImpl implements AlunoDAO{
 	private SessionFactory sessionFactory;
 	private Transaction transaction;
 	private Session session;
+	private EntityManager entityManager; 
 	
 	@Override
 	public void adicionarAluno(Aluno aluno) {
@@ -73,8 +76,8 @@ public class AlunoDAOImpl implements AlunoDAO{
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		try{
 			session = sessionFactory.openSession();
-			transaction = session.beginTransaction();
-			alunos = session.createQuery("from Aluno").list();
+			transaction = session.beginTransaction();			 
+			alunos = session.createQuery("from Aluno ").list(); 					 
 			transaction.commit();
 			session.close();
 		}catch(Exception ex){
